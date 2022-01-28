@@ -14,10 +14,15 @@ firebase.initializeApp({
   appId: "1:1040595781834:web:bce87014c61c1dddb28c33",
 });
 
+const auth = firebase.auth(),
+  firestore = firebase.firestore();
+
 function App() {
+  const [user] = useAuthState(auth);
   return (
     <div className="App">
       <header className="App-header"></header>
+      <section>{user ? <ChatRoom /> : <SignIn />}</section>
     </div>
   );
 }
